@@ -1,7 +1,22 @@
 // 整个项目的构建配置
 plugins {
-    // 安卓构建插件版本
+    // 安卓构建插件版本（和你原来的一致）
     id 'com.android.application' version '7.2.2' apply false
+}
+
+buildscript {
+    repositories {
+        // 必须加这两个仓库，不然 Gradle 找不到插件
+        google()
+        mavenCentral()
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
 // 定义通用版本，方便统一修改
