@@ -1,4 +1,4 @@
-name: Build APK (Final)
+name: Build APK (FINAL NO WRAPPER)
 
 on:
   workflow_dispatch: {}
@@ -15,25 +15,29 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Install Gradle & Dependencies
+      - name: Install Gradle (Fixed Version)
         run: |
           sudo apt update
-          sudo apt install -y gradle
+          sudo apt install -y gradle=7.5.*
+          gradle --version
+
+      - name: Global Repo Fix
+        run: |
           mkdir -p ~/.gradle
           cat > ~/.gradle/init.gradle << 'EOF'
           allprojects {
               repositories {
-                  mavenCentral()
                   google()
+                  mavenCentral()
               }
           }
           EOF
 
       - name: Build APK
-        run: gradle assembleRelease
+        run: gradle clean assembleRelease --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-jitu
+          name: Forced-Screenshot-APK
           path: app/build/outputs/apk/release/*.apk
