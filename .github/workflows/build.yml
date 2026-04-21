@@ -1,0 +1,41 @@
+# 工作流名字
+name: Build APK
+
+# 什么时候触发编译：
+# 1. 代码提交到main分支时
+# 2. 手动点击Run workflow时
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # 允许手动运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # 在Ubuntu服务器上编译
+
+    steps:
+    # 第一步：下载你的代码
+    - uses: actions/checkout@v4
+
+    # 第二步：安装Java环境
+    - name: Set up JDK 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+
+    # 第三步：给编译脚本加执行权限
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    # 第四步：开始编译APK
+    - name: Build with Gradle
+      run: ./gradlew assembleRelease
+
+    # 第五步：上传编译好的APK，供你下载
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-screenshot          # 压缩包名字
+        path: app/build/outputs/apk/release/*.apk  # APK所在路径
