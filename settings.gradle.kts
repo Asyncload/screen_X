@@ -6,13 +6,15 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    // 关闭强制仓库限制，彻底解决冲突报错
-    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-        maven("https://api.xposed.info")
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://api.xposed.info/' }
     }
 }
-rootProject.name = "ScreenModule"
-include(":app")
+
+rootProject.name = "SecureFlagModule"
+
+include ':app'
