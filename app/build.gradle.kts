@@ -30,7 +30,13 @@ android {
     }
 }
 
+repositories {
+    maven { url = uri("https://api.xposed.info/") }
+    google()
+    mavenCentral()
+}
+
 dependencies {
-    implementation("de.robv.android.xposed:api:82")
-    implementation("de.robv.android.xposed:api-static:82")
+    compileOnly("de.robv.android.xposed:api:82")
+    compileOnly("de.robv.android.xposed:api-static:82")
 }
