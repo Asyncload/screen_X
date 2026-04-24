@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SecureFlagModule"
 
-include ':app'
+include (":app")
