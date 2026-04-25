@@ -18,6 +18,7 @@ dependencyResolutionManagement {
         // 与pluginManagement保持一致，确保依赖下载
         google()
         mavenCentral()
+        gradlePluginPortal()
         maven("https://jitpack.io")
     }
 }
