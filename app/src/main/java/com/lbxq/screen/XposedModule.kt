@@ -1,12 +1,13 @@
-// app/src/main/java/com/lbxq/screen/XposedModule.kt
 package com.lbxq.screen
 
-import org.lsposed.hiddenapibypass.XC_LoadPackage
-import org.lsposed.hiddenapibypass.XposedBridge
+// 改用Xposed原生包，无需依赖
+import de.robv.android.xposed.IXposedHookLoadPackage
+import de.robv.android.xposed.XposedBridge
+import de.robv.android.xposed.callbacks.XC_LoadPackage
 
-class XposedModule : XC_LoadPackage.LoadPackageCallback {
+// 实现原生IXposedHookLoadPackage接口
+class XposedModule : IXposedHookLoadPackage {
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
-        XposedBridge.log("ScreenModule loaded for ${lpparam.packageName}")
-        // 在此添加具体的Hook逻辑
+        XposedBridge.log("ScreenModule加载成功：${lpparam.packageName}")
     }
 }
