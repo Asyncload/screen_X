@@ -29,5 +29,6 @@ android {
 }
 
 dependencies {
+    implementation("org.lsposed.api:api:93") // 适配LSPosed 1.8+的版本
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22")
 }
