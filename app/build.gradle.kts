@@ -31,4 +31,7 @@ android {
 dependencies {
     //implementation("org.lsposed.api:api:82") // 适配LSPosed 1.8+的版本
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22")
+    // 新增：添加Xposed的编译时依赖（不会打包到APK）
+    compileOnly("de.robv.android.xposed:api:82")
+    compileOnly("de.robv.android.xposed:api:82:sources")
 }
