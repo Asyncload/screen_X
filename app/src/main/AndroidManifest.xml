@@ -11,7 +11,7 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="屏幕相关功能模块" />
+            android:value="1.解除某些APP屏蔽截图功能。" />
         <meta-data
             android:name="xposedminversion"
             android:value="82" />
