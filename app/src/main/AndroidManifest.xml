@@ -1,9 +1,23 @@
+<！--清单文件-->
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.lbxq.screen"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lbxq.screen"> <!-- 与build.gradle的namespace一致 -->
 
-    <application>
-        <meta-data android:name="xposedmodule" android:value="true" />
-        <meta-data android:name="lsposedminversion" android:value="1.8.6" />
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+
+        <!-- LSPosed模块必须的标记（核心配置） -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="这是我的LSPosed模块" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="82" />
+
     </application>
+
 </manifest>
